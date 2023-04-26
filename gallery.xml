@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<simpleviewergallery 
+
+	useFlickr="false"
+	resizeOnImport="true"
+	cropToFit="false"
+	thumbPosition="BOTTOM"
+	thumbRows="2"
+	thumbColumns="6"
+	showOpenButton="true"
+	showFullscreenButton="true"
+	frameWidth="15"
+	textColor="FFFFFF"
+	backgroundColor="00151F"
+	indexPageName="albumpictures.html"
+
+>
+  <image imageURL="images/181.jpg"
+	thumbURL="thumbs/181.jpg"
+	linkURL="images/181.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/sedwrwer.jpg"
+	thumbURL="thumbs/sedwrwer.jpg"
+	linkURL="images/sedwrwer.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/DSC_0239fot3.jpg"
+	thumbURL="thumbs/DSC_0239fot3.jpg"
+	linkURL="images/DSC_0239fot3.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/IMG_6607rae2.jpg"
+	thumbURL="thumbs/IMG_6607rae2.jpg"
+	linkURL="images/IMG_6607rae2.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/_MG_0058-small.jpg"
+	thumbURL="thumbs/_MG_0058-small.jpg"
+	linkURL="images/_MG_0058-small.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/_MG_5264.jpg"
+	thumbURL="thumbs/_MG_5264.jpg"
+	linkURL="images/_MG_5264.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/hgtdhgh.jpg"
+	thumbURL="thumbs/hgtdhgh.jpg"
+	linkURL="images/hgtdhgh.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/_MG_5297.jpg"
+	thumbURL="thumbs/_MG_5297.jpg"
+	linkURL="images/_MG_5297.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/0202.jpg"
+	thumbURL="thumbs/0202.jpg"
+	linkURL="images/0202.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/gfhfhg.jpg"
+	thumbURL="thumbs/gfhfhg.jpg"
+	linkURL="images/gfhfhg.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/MVI_7000-4.jpg"
+	thumbURL="thumbs/MVI_7000-4.jpg"
+	linkURL="images/MVI_7000-4.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/DSC_0164.jpg"
+	thumbURL="thumbs/DSC_0164.jpg"
+	linkURL="images/DSC_0164.jpg"
+	linkTarget="_blank">
+    <caption><![CDATA[]]></caption>
+  </image>
+</simpleviewergallery>
