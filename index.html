@@ -65,10 +65,40 @@
       height: auto;
       margin: 0;
     }
+    .illustration-link {
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .illustration-link:focus-visible {
+      outline: 1px solid #EEEAE3;
+      outline-offset: 8px;
+    }
     .illustration-image {
       display: block;
       width: 100%;
       height: auto;
+      transition: transform .35s ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .illustration-link:hover .illustration-image {
+        transform: scale(1.025);
+      }
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .42s ease;
+    }
+    body.is-leaving::after { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      body::after, .illustration-image { transition: none; }
     }
     .address {
       display: block;
@@ -118,7 +148,9 @@
     
     <p class="english">Atenas is now at atenas.top. You will find all the music, news and information about the project there.</p>
     <div class="illustration">
-      <img class="illustration-image" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-5" alt="Ilustración del niño en la silla">
+      <a class="illustration-link" href="https://atenas.top/" aria-label="Entrar en la web de Atenas / Visit the Atenas website">
+        <img class="illustration-image" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-5" alt="Ilustración del niño en la silla">
+      </a>
     </div>
     <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
     <a class="link english" href="https://atenas.top/">Visit the new website</a>
@@ -126,6 +158,16 @@
   </main>
 
   <script>
+    document.querySelector(".illustration-link").addEventListener("click", function (event) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      document.body.classList.add("is-leaving");
+      var delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 460;
+      window.setTimeout(function () {
+        window.location.href = "https://atenas.top/";
+      }, delay);
+    });
+
     function toggleLanguage() {
       var isEnglish = document.body.classList.toggle("lang-en");
       document.documentElement.lang = isEnglish ? "en" : "es";
