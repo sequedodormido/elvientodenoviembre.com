@@ -3,120 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11100F">
-  <link rel="icon" href="https://atenas.top/favicon.ico" sizes="any">
-  <title>Atenas tiene nueva web | Atenas</title>
-  <meta name="description" content="Atenas tiene nueva web. Toda la música y la información están en atenas.top.">
-  <style>
-    * { box-sizing: border-box; }
-    html, body { min-height: 100%; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 22px;
-      background: #11100F;
-      color: #EEEAE3;
-      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-    }
-    main { width: min(100%, 720px); }
-    h1 {
-      margin: 0 0 28px;
-      font-size: clamp(30px, 6vw, 52px);
-      line-height: 1.15;
-      font-weight: 500;
-      letter-spacing: -0.06em;
-    }
-    p {
-      margin: 0 auto 18px;
-      max-width: 590px;
-      color: #EEEAE3;
-      font-size: clamp(15px, 2.2vw, 18px);
-      line-height: 1.8;
-    }
-    .link {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 14px 18px;
-      border: 1px solid #EEEAE3;
-      color: #EEEAE3;
-      text-decoration: none;
-      font-size: 14px;
-      transition: background .2s ease, color .2s ease;
-    }
-    .link:hover, .link:focus-visible {
-      background: #EEEAE3;
-      color: #11100F;
-      outline: none;
-    }
-    .address {
-      display: block;
-      margin-top: 22px;
-      font-size: 12px;
-      letter-spacing: .04em;
-      opacity: .75;
-    }
-    .language {
-      position: fixed;
-      top: 24px;
-      right: 28px;
-      z-index: 10;
-      background: transparent;
-      color: #EEEAE3;
-      border: 1px solid rgba(238, 234, 227, .32);
-      padding: 9px 14px;
-      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-      font-size: 10px;
-      letter-spacing: 1.7px;
-      cursor: pointer;
-      transition: color .25s ease, border-color .25s ease;
-    }
-    .language:hover, .language:focus-visible {
-      border-color: #EEEAE3;
-      color: #EEEAE3;
-    }
-    .english { display: none; }
-    body.lang-en .spanish { display: none !important; }
-    body.lang-en .english { display: revert; }
-    @media (max-width: 520px) {
-      .language { top: 15px; right: 15px; }
-      body { padding-top: 70px; }
-    }
-  </style>
+  <meta http-equiv="refresh" content="0; url=/siempre-es-ahora.html">
+  <link rel="canonical" href="https://elvientodenoviembre.com/siempre-es-ahora.html">
+  <title>Siempre es ahora</title>
+  <script>window.location.replace("/siempre-es-ahora.html");</script>
 </head>
 <body>
-  <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
-  <main>
-    <h1 class="spanish">Atenas tiene nueva web.</h1>
-    <h1 class="english">Atenas has a new website.</h1>
-    
-    <p class="spanish">Toda la música y la información están en:</p>
-    
-    <p class="english">Music and information are now at:</p>
-    <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
-    <a class="link english" href="https://atenas.top/">Visit the new website</a>
-    <span class="address">atenas.top</span>
-  </main>
-
-  <script>
-    function toggleLanguage() {
-      var isEnglish = document.body.classList.toggle("lang-en");
-      document.documentElement.lang = isEnglish ? "en" : "es";
-      document.querySelector(".language").textContent = isEnglish ? "ESPAÑOL" : "ENGLISH";
-    }
-  </script>
-
-  <script>
-    // Desde el 11 de marzo de 2027, enviar directamente a la nueva web.
-    (function () {
-      var activationDate = new Date("2027-03-11T00:00:00+01:00").getTime();
-      if (Date.now() >= activationDate) {
-        window.location.replace("https://atenas.top/");
-      }
-    })();
-  </script>
+  <p><a href="/siempre-es-ahora.html">Continuar</a></p>
 </body>
 </html>
