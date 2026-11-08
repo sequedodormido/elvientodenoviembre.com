@@ -71,48 +71,59 @@
       height: auto;
     }
     .illustration-image.first {
-      animation: image-one 24s infinite;
+      animation: image-zero 30s infinite;
     }
     .illustration-image.second {
       position: absolute;
       inset: 0;
-      animation: image-two 24s infinite;
+      animation: image-one 30s infinite;
     }
     .illustration-image.third {
       position: absolute;
       inset: 0;
-      animation: image-three 24s infinite;
+      animation: image-two 30s infinite;
     }
     .illustration-image.fourth {
       position: absolute;
       inset: 0;
-      animation: image-four 24s infinite;
+      animation: image-three 30s infinite;
+    }
+    .illustration-image.fifth {
+      position: absolute;
+      inset: 0;
+      animation: image-four 30s infinite;
+    }
+    @keyframes image-zero {
+      0% { opacity: 0; }
+      4%, 16% { opacity: 1; }
+      20%, 100% { opacity: 0; }
     }
     @keyframes image-one {
-      0% { opacity: 0; }
-      4%, 21% { opacity: 1; }
-      25%, 100% { opacity: 0; }
+      0%, 16% { opacity: 0; }
+      20%, 36% { opacity: 1; }
+      40%, 100% { opacity: 0; }
     }
     @keyframes image-two {
-      0%, 21% { opacity: 0; }
-      25%, 46% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      0%, 36% { opacity: 0; }
+      40%, 56% { opacity: 1; }
+      60%, 100% { opacity: 0; }
     }
     @keyframes image-three {
-      0%, 46% { opacity: 0; }
-      50%, 71% { opacity: 1; }
-      75%, 100% { opacity: 0; }
+      0%, 56% { opacity: 0; }
+      60%, 76% { opacity: 1; }
+      80%, 100% { opacity: 0; }
     }
     @keyframes image-four {
       0% { opacity: 1; }
-      4%, 71% { opacity: 0; }
-      75%, 100% { opacity: 1; }
+      4%, 76% { opacity: 0; }
+      80%, 100% { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce) {
       .illustration-image.first { animation: none; opacity: 1; }
       .illustration-image.second,
       .illustration-image.third,
-      .illustration-image.fourth { animation: none; opacity: 0; }
+      .illustration-image.fourth,
+      .illustration-image.fifth { animation: none; opacity: 0; }
     }
     .address {
       display: block;
@@ -161,11 +172,12 @@
     <p class="spanish">Atenas sigue en atenas.top. Allí encontrarás toda la música, las novedades y la información del proyecto.</p>
     
     <p class="english">Atenas is now at atenas.top. You will find all the music, news and information about the project there.</p>
-    <div class="illustration" aria-label="Cuatro ilustraciones que se alternan lentamente">
-      <img class="illustration-image first" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-4" alt="Ilustración del niño junto a la silla, primera posición">
-      <img class="illustration-image second" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla2.png?v=20261108-4" alt="Ilustración del niño en la segunda posición">
-      <img class="illustration-image third" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla3.png?v=20261108-1" alt="Ilustración del niño en la tercera posición">
-      <img class="illustration-image fourth" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla4.png?v=20261108-1" alt="Ilustración del niño en la cuarta posición">
+    <div class="illustration" aria-label="Cinco ilustraciones que se alternan lentamente">
+      <img class="illustration-image first" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla0.png?v=20261108-1" alt="Ilustración del niño en la posición inicial">
+      <img class="illustration-image second" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-5" alt="Ilustración del niño en la primera posición">
+      <img class="illustration-image third" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla2.png?v=20261108-5" alt="Ilustración del niño en la segunda posición">
+      <img class="illustration-image fourth" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla3.png?v=20261108-2" alt="Ilustración del niño en la tercera posición">
+      <img class="illustration-image fifth" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla4.png?v=20261108-2" alt="Ilustración del niño en la cuarta posición">
     </div>
     <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
     <a class="link english" href="https://atenas.top/">Visit the new website</a>
