@@ -287,6 +287,26 @@
         tone.start(now);
         tone.stop(now + 1.84);
 
+        // Pequeños chasquidos digitales repartidos durante la interferencia.
+        [0.18, 0.46, 0.91, 1.28, 1.68].forEach(function (offset, index) {
+          var click = audio.createOscillator();
+          var clickGain = audio.createGain();
+          var clickFilter = audio.createBiquadFilter();
+          click.type = index % 2 ? "square" : "triangle";
+          click.frequency.setValueAtTime(index % 2 ? 1850 : 2450, now + offset);
+          click.frequency.exponentialRampToValueAtTime(520, now + offset + 0.035);
+          clickFilter.type = "highpass";
+          clickFilter.frequency.setValueAtTime(700, now + offset);
+          clickGain.gain.setValueAtTime(0.0001, now + offset);
+          clickGain.gain.linearRampToValueAtTime(0.11, now + offset + 0.004);
+          clickGain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.045);
+          click.connect(clickFilter);
+          clickFilter.connect(clickGain);
+          clickGain.connect(master);
+          click.start(now + offset);
+          click.stop(now + offset + 0.05);
+        });
+
         window.setTimeout(function () { audio.close(); }, 2600);
       } catch (error) {
         // Si el navegador no permite audio, la transición visual continúa normalmente.
