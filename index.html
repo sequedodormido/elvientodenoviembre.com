@@ -287,24 +287,44 @@
         tone.start(now);
         tone.stop(now + 1.84);
 
-        // Pequeños chasquidos digitales repartidos durante la interferencia.
-        [0.18, 0.46, 0.91, 1.28, 1.68].forEach(function (offset, index) {
+        // Chasquidos digitales más definidos, con un pequeño golpe de estática.
+        [0.16, 0.43, 0.78, 1.12, 1.49, 1.78].forEach(function (offset, index) {
           var click = audio.createOscillator();
           var clickGain = audio.createGain();
           var clickFilter = audio.createBiquadFilter();
-          click.type = index % 2 ? "square" : "triangle";
-          click.frequency.setValueAtTime(index % 2 ? 1850 : 2450, now + offset);
-          click.frequency.exponentialRampToValueAtTime(520, now + offset + 0.035);
+          click.type = index % 2 ? "square" : "sawtooth";
+          click.frequency.setValueAtTime(index % 2 ? 2100 : 3100, now + offset);
+          click.frequency.exponentialRampToValueAtTime(420 + (index % 3) * 180, now + offset + 0.042);
           clickFilter.type = "highpass";
-          clickFilter.frequency.setValueAtTime(700, now + offset);
+          clickFilter.frequency.setValueAtTime(1100, now + offset);
           clickGain.gain.setValueAtTime(0.0001, now + offset);
-          clickGain.gain.linearRampToValueAtTime(0.11, now + offset + 0.004);
-          clickGain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.045);
+          clickGain.gain.linearRampToValueAtTime(0.62, now + offset + 0.003);
+          clickGain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.052);
           click.connect(clickFilter);
           clickFilter.connect(clickGain);
           clickGain.connect(master);
           click.start(now + offset);
-          click.stop(now + offset + 0.05);
+          click.stop(now + offset + 0.055);
+
+          var snapLength = Math.floor(audio.sampleRate * 0.018);
+          var snapBuffer = audio.createBuffer(1, snapLength, audio.sampleRate);
+          var snapData = snapBuffer.getChannelData(0);
+          for (var j = 0; j < snapLength; j++) {
+            snapData[j] = (Math.random() * 2 - 1) * (1 - j / snapLength);
+          }
+          var snap = audio.createBufferSource();
+          var snapGain = audio.createGain();
+          var snapFilter = audio.createBiquadFilter();
+          snap.buffer = snapBuffer;
+          snapFilter.type = "highpass";
+          snapFilter.frequency.setValueAtTime(1800, now + offset);
+          snapGain.gain.setValueAtTime(0.0001, now + offset);
+          snapGain.gain.linearRampToValueAtTime(0.48, now + offset + 0.002);
+          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.022);
+          snap.connect(snapFilter);
+          snapFilter.connect(snapGain);
+          snapGain.connect(master);
+          snap.start(now + offset);
         });
 
         window.setTimeout(function () { audio.close(); }, 2600);
