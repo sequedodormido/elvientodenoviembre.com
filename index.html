@@ -59,24 +59,29 @@
       outline: none;
     }
     .illustration {
+      position: relative;
       display: block;
       width: min(42vw, 240px);
       height: auto;
       margin: 0;
-      transform: translateY(0) rotate(0) scale(1);
-      transform-origin: 50% 55%;
-      transition: transform 650ms cubic-bezier(.2,.75,.25,1), filter 650ms ease;
-      will-change: transform;
     }
-    @media (hover: hover) and (pointer: fine) {
-      .illustration:hover {
-        transform: translateY(-6px) rotate(-1deg) scale(1.025);
-      }
+    .illustration-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .illustration-image.second {
+      position: absolute;
+      inset: 0;
+      animation: image-crossfade 12s infinite;
+    }
+    @keyframes image-crossfade {
+      0%, 41.7% { opacity: 0; }
+      50%, 91.7% { opacity: 1; }
+      100% { opacity: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .illustration {
-        transition: none;
-      }
+      .illustration-image.second { animation: none; opacity: 0; }
     }
     .address {
       display: block;
@@ -125,7 +130,10 @@
     <p class="spanish">Atenas sigue en atenas.top. Allí encontrarás toda la música, las novedades y la información del proyecto.</p>
     
     <p class="english">Atenas is now at atenas.top. You will find all the music, news and information about the project there.</p>
-    <img class="illustration" src="nino-silla.png" alt="Ilustración de un niño frente a una silla vacía">
+    <div class="illustration" aria-label="Dos ilustraciones que se alternan lentamente">
+      <img class="illustration-image first" src="nino-silla.png" alt="Ilustración de un niño frente a una silla">
+      <img class="illustration-image second" src="nino-silla2.png" alt="Ilustración de un niño sentado en la silla">
+    </div>
     <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
     <a class="link english" href="https://atenas.top/">Visit the new website</a>
     <span class="address">atenas.top</span>
