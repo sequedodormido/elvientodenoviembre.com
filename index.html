@@ -107,16 +107,16 @@
       background: #11100F;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .34s ease .48s;
+      transition: opacity .45s ease 1.25s;
     }
     body.is-glitching::before {
-      animation: signal-break .86s steps(1, end) forwards;
+      animation: signal-break 1.8s steps(1, end) forwards;
     }
     body.is-glitching .illustration-image {
-      animation: image-glitch .72s steps(1, end) both;
+      animation: image-glitch 1.55s steps(1, end) both;
     }
     body.is-glitching main {
-      animation: screen-jolt .72s steps(1, end) both;
+      animation: screen-jolt 1.55s steps(1, end) both;
     }
     body.is-leaving::after { opacity: 1; }
     @keyframes signal-break {
@@ -214,13 +214,93 @@
   </main>
 
   <script>
+    function playGlitchSound() {
+      try {
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        var audio = new AudioContext();
+        var now = audio.currentTime;
+        var master = audio.createGain();
+        master.gain.setValueAtTime(0.0001, now);
+        master.gain.exponentialRampToValueAtTime(0.16, now + 0.035);
+        master.gain.setValueAtTime(0.16, now + 1.35);
+        master.gain.exponentialRampToValueAtTime(0.0001, now + 2.05);
+        master.connect(audio.destination);
+
+        var length = Math.floor(audio.sampleRate * 2.05);
+        var noiseBuffer = audio.createBuffer(1, length, audio.sampleRate);
+        var data = noiseBuffer.getChannelData(0);
+        for (var i = 0; i < length; i++) {
+          data[i] = (Math.random() * 2 - 1) * (0.7 + 0.3 * Math.sin(i / audio.sampleRate * 38));
+        }
+        var noise = audio.createBufferSource();
+        noise.buffer = noiseBuffer;
+        var filter = audio.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(850, now);
+        filter.frequency.exponentialRampToValueAtTime(4200, now + 0.55);
+        filter.frequency.exponentialRampToValueAtTime(380, now + 1.95);
+        filter.Q.value = 0.8;
+        var noiseGain = audio.createGain();
+        noiseGain.gain.setValueAtTime(0.0001, now);
+        noiseGain.gain.linearRampToValueAtTime(0.42, now + 0.12);
+        noiseGain.gain.setValueAtTime(0.12, now + 0.42);
+        noiseGain.gain.setValueAtTime(0.48, now + 0.68);
+        noiseGain.gain.setValueAtTime(0.08, now + 0.82);
+        noiseGain.gain.setValueAtTime(0.36, now + 1.12);
+        noiseGain.gain.setValueAtTime(0.16, now + 1.48);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.02);
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(master);
+        noise.start(now);
+        noise.stop(now + 2.05);
+
+        var impact = audio.createOscillator();
+        impact.type = "sine";
+        impact.frequency.setValueAtTime(105, now + 0.72);
+        impact.frequency.exponentialRampToValueAtTime(38, now + 1.18);
+        var impactGain = audio.createGain();
+        impactGain.gain.setValueAtTime(0.0001, now);
+        impactGain.gain.setValueAtTime(0.5, now + 0.72);
+        impactGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.5);
+        impact.connect(impactGain);
+        impactGain.connect(master);
+        impact.start(now);
+        impact.stop(now + 1.52);
+
+        var tone = audio.createOscillator();
+        tone.type = "sawtooth";
+        tone.frequency.setValueAtTime(180, now + 0.08);
+        tone.frequency.exponentialRampToValueAtTime(1250, now + 0.58);
+        tone.frequency.exponentialRampToValueAtTime(95, now + 1.72);
+        var toneGain = audio.createGain();
+        toneGain.gain.setValueAtTime(0.0001, now);
+        toneGain.gain.setValueAtTime(0.12, now + 0.08);
+        toneGain.gain.setValueAtTime(0.0001, now + 0.3);
+        toneGain.gain.setValueAtTime(0.1, now + 0.52);
+        toneGain.gain.setValueAtTime(0.0001, now + 0.78);
+        toneGain.gain.setValueAtTime(0.08, now + 1.05);
+        toneGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.82);
+        tone.connect(toneGain);
+        toneGain.connect(master);
+        tone.start(now);
+        tone.stop(now + 1.84);
+
+        window.setTimeout(function () { audio.close(); }, 2600);
+      } catch (error) {
+        // Si el navegador no permite audio, la transición visual continúa normalmente.
+      }
+    }
+
     document.querySelector(".illustration-link").addEventListener("click", function (event) {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       document.body.classList.add("is-leaving");
       if (!reducedMotion) document.body.classList.add("is-glitching");
-      var delay = reducedMotion ? 0 : 920;
+      if (!reducedMotion) playGlitchSound();
+      var delay = reducedMotion ? 0 : 2200;
       window.setTimeout(function () {
         window.location.href = "siempre-es-ahora.html";
       }, delay);
