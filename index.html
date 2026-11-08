@@ -70,17 +70,26 @@
       width: 100%;
       height: auto;
     }
+    .illustration-image.first {
+      animation: image-first 12s infinite;
+    }
     .illustration-image.second {
       position: absolute;
       inset: 0;
-      animation: image-crossfade 12s infinite;
+      animation: image-second 12s infinite;
     }
-    @keyframes image-crossfade {
-      0%, 41.7% { opacity: 0; }
-      50%, 91.7% { opacity: 1; }
-      100% { opacity: 0; }
+    @keyframes image-first {
+      0%, 44% { opacity: 1; }
+      48%, 96% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes image-second {
+      0%, 48% { opacity: 0; }
+      52%, 92% { opacity: 1; }
+      96%, 100% { opacity: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
+      .illustration-image.first { animation: none; opacity: 1; }
       .illustration-image.second { animation: none; opacity: 0; }
     }
     .address {
