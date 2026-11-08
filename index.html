@@ -70,61 +70,6 @@
       width: 100%;
       height: auto;
     }
-    .illustration-image.first {
-      animation: image-zero 24s infinite;
-    }
-    .illustration-image.second {
-      position: absolute;
-      inset: 0;
-      animation: image-one 24s infinite;
-    }
-    .illustration-image.third {
-      position: absolute;
-      inset: 0;
-      animation: image-two 24s infinite;
-    }
-    .illustration-image.fourth {
-      position: absolute;
-      inset: 0;
-      animation: image-three 24s infinite;
-    }
-    .illustration-image.fifth {
-      position: absolute;
-      inset: 0;
-      animation: image-four 24s infinite;
-    }
-    @keyframes image-zero {
-      0% { opacity: 0; }
-      1%, 19% { opacity: 1; }
-      20%, 100% { opacity: 0; }
-    }
-    @keyframes image-one {
-      0%, 19% { opacity: 0; }
-      20%, 39% { opacity: 1; }
-      40%, 100% { opacity: 0; }
-    }
-    @keyframes image-two {
-      0%, 39% { opacity: 0; }
-      40%, 59% { opacity: 1; }
-      60%, 100% { opacity: 0; }
-    }
-    @keyframes image-three {
-      0%, 59% { opacity: 0; }
-      60%, 79% { opacity: 1; }
-      80%, 100% { opacity: 0; }
-    }
-    @keyframes image-four {
-      0%, 4%, 79% { opacity: 0; }
-      80%, 95% { opacity: 1; }
-      96%, 100% { opacity: 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .illustration-image.first { animation: none; opacity: 1; }
-      .illustration-image.second,
-      .illustration-image.third,
-      .illustration-image.fourth,
-      .illustration-image.fifth { animation: none; opacity: 0; }
-    }
     .address {
       display: block;
       margin-top: 0;
@@ -172,12 +117,8 @@
     <p class="spanish">Atenas sigue en atenas.top. Allí encontrarás toda la música, las novedades y la información del proyecto.</p>
     
     <p class="english">Atenas is now at atenas.top. You will find all the music, news and information about the project there.</p>
-    <div class="illustration" aria-label="Cinco ilustraciones que se alternan lentamente">
-      <img class="illustration-image first" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla0.png?v=20261108-1" alt="Ilustración del niño en la posición inicial">
-      <img class="illustration-image second" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-5" alt="Ilustración del niño en la primera posición">
-      <img class="illustration-image third" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla2.png?v=20261108-5" alt="Ilustración del niño en la segunda posición">
-      <img class="illustration-image fourth" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla3.png?v=20261108-2" alt="Ilustración del niño en la tercera posición">
-      <img class="illustration-image fifth" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla4.png?v=20261108-2" alt="Ilustración del niño en la cuarta posición">
+    <div class="illustration">
+      <img class="illustration-image" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-5" alt="Ilustración del niño en la silla">
     </div>
     <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
     <a class="link english" href="https://atenas.top/">Visit the new website</a>
