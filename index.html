@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#11100F">
+  <link rel="icon" href="https://atenas.top/favicon.ico" sizes="any">
   <title>Nos hemos mudado | Atenas</title>
   <meta name="description" content="El proyecto continúa en su nueva web oficial: Atenas.">
   <style>
@@ -58,16 +59,55 @@
       letter-spacing: .04em;
       opacity: .75;
     }
+    .language {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      z-index: 10;
+      background: transparent;
+      color: #EEEAE3;
+      border: 1px solid rgba(238, 234, 227, .32);
+      padding: 9px 14px;
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 1.7px;
+      cursor: pointer;
+      transition: color .25s ease, border-color .25s ease;
+    }
+    .language:hover, .language:focus-visible {
+      border-color: #EEEAE3;
+      color: #EEEAE3;
+    }
+    .english { display: none; }
+    body.lang-en .spanish { display: none !important; }
+    body.lang-en .english { display: revert; }
+    @media (max-width: 520px) {
+      .language { top: 15px; right: 15px; }
+      body { padding-top: 70px; }
+    }
   </style>
 </head>
 <body>
+  <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
   <main>
-    <h1>Nos hemos mudado.</h1>
-    <p>El recorrido continúa en la web oficial de Atenas.</p>
-    <p>Allí encontrarás la música, las nuevas canciones y toda la información del proyecto.</p>
-    <a class="link" href="https://atenas.top/">Visitar la nueva web</a>
+    <h1 class="spanish">Nos hemos mudado.</h1>
+    <h1 class="english">We've moved.</h1>
+    <p class="spanish">El proyecto continúa ahora en la web oficial de Atenas.</p>
+    <p class="spanish">La música, las nuevas canciones y toda la información están disponibles en la web oficial.</p>
+    <p class="english">The project continues on the official Atenas website.</p>
+    <p class="english">Music, new songs and all the information are available on the website.</p>
+    <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
+    <a class="link english" href="https://atenas.top/">Visit the new website</a>
     <span class="address">atenas.top</span>
   </main>
+
+  <script>
+    function toggleLanguage() {
+      var isEnglish = document.body.classList.toggle("lang-en");
+      document.documentElement.lang = isEnglish ? "en" : "es";
+      document.querySelector(".language").textContent = isEnglish ? "ESPAÑOL" : "ENGLISH";
+    }
+  </script>
 
   <script>
     // Desde el 11 de marzo de 2027, enviar directamente a la nueva web.
