@@ -86,7 +86,9 @@
     }
     .english { display: none; }
     body.lang-en .spanish { display: none !important; }
-    body.lang-en .english { display: revert; }
+    body.lang-en h1.english,
+    body.lang-en p.english { display: block; }
+    body.lang-en a.english { display: inline-block; }
     body.lang-en .link.english { display: inline-block; }
     @media (max-width: 520px) {
       .language { top: 15px; right: 15px; }
