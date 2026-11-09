@@ -1,12 +1,366 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="0; url=/">
-<link rel="canonical" href="https://elvientodenoviembre.com/">
-<title>El viento de noviembre</title>
-<script>window.location.replace("/");</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11100F">
+  <link rel="icon" href="https://atenas.top/favicon.ico" sizes="any">
+  <title>Nos mudamos de web | Atenas</title>
+  <meta name="description" content="Nos mudamos de web. Atenas continúa en atenas.top. Toda la música y la información del proyecto están allí.">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 22px;
+      background: #11100F;
+      color: #EEEAE3;
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: min(100%, 720px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 52px);
+      line-height: 1.15;
+      font-weight: 500;
+      letter-spacing: -0.06em;
+    }
+    p {
+      margin: 0 auto;
+      max-width: 590px;
+      color: #EEEAE3;
+      font-size: clamp(15px, 2.2vw, 18px);
+      line-height: 1.8;
+    }
+    .link {
+      display: inline-block;
+      margin-top: 0;
+      padding: 14px 18px;
+      border: 1px solid #EEEAE3;
+      color: #EEEAE3;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .link:hover, .link:focus-visible {
+      background: #EEEAE3;
+      color: #11100F;
+      outline: none;
+    }
+    .illustration {
+      position: relative;
+      display: block;
+      width: min(42vw, 240px);
+      height: auto;
+      margin: 0;
+    }
+    .illustration-link {
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .illustration-link:focus-visible {
+      outline: 1px solid #EEEAE3;
+      outline-offset: 8px;
+    }
+    .illustration-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .35s ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .illustration-link:hover .illustration-image {
+        transform: scale(1.025);
+      }
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 101;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        linear-gradient(transparent 0 42%, rgba(238,234,227,.9) 42% 43%, transparent 43% 100%),
+        repeating-linear-gradient(0deg, rgba(238,234,227,.16) 0 1px, transparent 1px 5px),
+        linear-gradient(105deg, transparent 0 34%, rgba(238,234,227,.22) 48%, transparent 62%);
+      mix-blend-mode: screen;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: #11100F;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .45s ease 1.25s;
+    }
+    body.is-glitching::before {
+      animation: signal-break 1.8s steps(1, end) forwards;
+    }
+    body.is-glitching .illustration-image {
+      animation: image-glitch 1.55s steps(1, end) both;
+    }
+    body.is-glitching main {
+      animation: screen-jolt 1.55s steps(1, end) both;
+    }
+    body.is-leaving::after { opacity: 1; }
+    @keyframes signal-break {
+      0%, 100% { opacity: 0; }
+      8% { opacity: .18; transform: translateX(-5px); }
+      13% { opacity: .85; transform: translateX(7px) skewX(-2deg); }
+      18% { opacity: .12; transform: translateX(0); }
+      27% { opacity: .65; clip-path: inset(18% 0 67% 0); transform: translateX(11px); }
+      33% { opacity: .9; clip-path: inset(54% 0 28% 0); transform: translateX(-9px); }
+      39% { opacity: .2; clip-path: inset(0); transform: translateX(0); }
+      48% { opacity: 1; background-color: rgba(238,234,227,.72); }
+      54% { opacity: .08; background-color: transparent; }
+      61% { opacity: .75; clip-path: inset(72% 0 8% 0); transform: translateX(4px); }
+      69% { opacity: .25; clip-path: inset(0); transform: translateX(-3px); }
+      78% { opacity: .9; background-color: rgba(238,234,227,.28); }
+      88% { opacity: .12; }
+    }
+    @keyframes image-glitch {
+      0%, 100% { transform: none; filter: none; }
+      12% { transform: translateX(-5px) skewX(-2deg); filter: contrast(1.8); }
+      20% { transform: translateX(4px); clip-path: inset(8% 0 35% 0); }
+      28% { transform: translateX(-2px) scale(1.025); clip-path: inset(0); }
+      43% { transform: translateX(7px) skewX(3deg); filter: brightness(2.4); }
+      50% { transform: translateX(-4px); filter: invert(1); }
+      58% { transform: translateX(2px); filter: contrast(2); }
+      70% { transform: none; filter: none; }
+    }
+    @keyframes screen-jolt {
+      0%, 100% { transform: none; }
+      14% { transform: translateX(-3px); }
+      26% { transform: translateX(3px) skewY(.3deg); }
+      39% { transform: translateX(-2px); }
+      50% { transform: scale(1.012); }
+      62% { transform: translateX(1px); }
+      74% { transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body::before, body::after, .illustration-image, main { animation: none !important; transition: none; }
+    }
+    .address {
+      display: block;
+      margin-top: 0;
+      font-size: 12px;
+      letter-spacing: .04em;
+      opacity: .75;
+    }
+    .language {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      z-index: 10;
+      background: transparent;
+      color: #EEEAE3;
+      border: 1px solid rgba(238, 234, 227, .32);
+      padding: 9px 14px;
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 1.7px;
+      cursor: pointer;
+      transition: color .25s ease, border-color .25s ease;
+    }
+    .language:hover, .language:focus-visible {
+      border-color: #EEEAE3;
+      color: #EEEAE3;
+    }
+    .english { display: none; }
+    body.lang-en .spanish { display: none !important; }
+    body.lang-en h1.english,
+    body.lang-en p.english { display: block; }
+    body.lang-en a.english { display: inline-block; }
+    body.lang-en .link.english { display: inline-block; }
+    @media (max-width: 520px) {
+      .language { top: 15px; right: 15px; }
+      body { padding-top: 70px; }
+    }
+  </style>
 </head>
-<body><p><a href="/">Continuar</a></p></body>
+<body>
+  <button class="language" type="button" onclick="toggleLanguage()">ENGLISH</button>
+  <main>
+    <h1 class="spanish">Nos mudamos de web.</h1>
+    <h1 class="english">We have moved to a new website.</h1>
+    
+    <p class="spanish">Atenas sigue en atenas.top. Allí encontrarás toda la música, las novedades y la información del proyecto.</p>
+    
+    <p class="english">Atenas is now at atenas.top. You will find all the music, news and information about the project there.</p>
+    <div class="illustration">
+      <a class="illustration-link" href="siempre-es-ahora.html" aria-label="Continuar">
+        <img class="illustration-image" src="https://raw.githubusercontent.com/sequedodormido/atenas.top/main/nino-silla.png?v=20261108-5" alt="Ilustración del niño en la silla">
+      </a>
+    </div>
+    <a class="link spanish" href="https://atenas.top/">Visitar la nueva web</a>
+    <a class="link english" href="https://atenas.top/">Visit the new website</a>
+    <span class="address">atenas.top</span>
+  </main>
+
+  <script>
+    function playGlitchSound() {
+      try {
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        var audio = new AudioContext();
+        var now = audio.currentTime;
+        var master = audio.createGain();
+        master.gain.setValueAtTime(0.0001, now);
+        master.gain.exponentialRampToValueAtTime(0.16, now + 0.035);
+        master.gain.setValueAtTime(0.16, now + 1.35);
+        master.gain.exponentialRampToValueAtTime(0.0001, now + 2.05);
+        master.connect(audio.destination);
+
+        var length = Math.floor(audio.sampleRate * 2.05);
+        var noiseBuffer = audio.createBuffer(1, length, audio.sampleRate);
+        var data = noiseBuffer.getChannelData(0);
+        for (var i = 0; i < length; i++) {
+          data[i] = (Math.random() * 2 - 1) * (0.7 + 0.3 * Math.sin(i / audio.sampleRate * 38));
+        }
+        var noise = audio.createBufferSource();
+        noise.buffer = noiseBuffer;
+        var filter = audio.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(850, now);
+        filter.frequency.exponentialRampToValueAtTime(4200, now + 0.55);
+        filter.frequency.exponentialRampToValueAtTime(380, now + 1.95);
+        filter.Q.value = 0.8;
+        var noiseGain = audio.createGain();
+        noiseGain.gain.setValueAtTime(0.0001, now);
+        noiseGain.gain.linearRampToValueAtTime(0.42, now + 0.12);
+        noiseGain.gain.setValueAtTime(0.12, now + 0.42);
+        noiseGain.gain.setValueAtTime(0.48, now + 0.68);
+        noiseGain.gain.setValueAtTime(0.08, now + 0.82);
+        noiseGain.gain.setValueAtTime(0.36, now + 1.12);
+        noiseGain.gain.setValueAtTime(0.16, now + 1.48);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.02);
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(master);
+        noise.start(now);
+        noise.stop(now + 2.05);
+
+        var impact = audio.createOscillator();
+        impact.type = "sine";
+        impact.frequency.setValueAtTime(105, now + 0.72);
+        impact.frequency.exponentialRampToValueAtTime(38, now + 1.18);
+        var impactGain = audio.createGain();
+        impactGain.gain.setValueAtTime(0.0001, now);
+        impactGain.gain.setValueAtTime(0.5, now + 0.72);
+        impactGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.5);
+        impact.connect(impactGain);
+        impactGain.connect(master);
+        impact.start(now);
+        impact.stop(now + 1.52);
+
+        var tone = audio.createOscillator();
+        tone.type = "sawtooth";
+        tone.frequency.setValueAtTime(180, now + 0.08);
+        tone.frequency.exponentialRampToValueAtTime(1250, now + 0.58);
+        tone.frequency.exponentialRampToValueAtTime(95, now + 1.72);
+        var toneGain = audio.createGain();
+        toneGain.gain.setValueAtTime(0.0001, now);
+        toneGain.gain.setValueAtTime(0.12, now + 0.08);
+        toneGain.gain.setValueAtTime(0.0001, now + 0.3);
+        toneGain.gain.setValueAtTime(0.1, now + 0.52);
+        toneGain.gain.setValueAtTime(0.0001, now + 0.78);
+        toneGain.gain.setValueAtTime(0.08, now + 1.05);
+        toneGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.82);
+        tone.connect(toneGain);
+        toneGain.connect(master);
+        tone.start(now);
+        tone.stop(now + 1.84);
+
+        // Chasquidos digitales más definidos, con un pequeño golpe de estática.
+        [0.16, 0.43, 0.78, 1.12, 1.49, 1.78].forEach(function (offset, index) {
+          var click = audio.createOscillator();
+          var clickGain = audio.createGain();
+          var clickFilter = audio.createBiquadFilter();
+          click.type = index % 2 ? "square" : "sawtooth";
+          click.frequency.setValueAtTime(index % 2 ? 2100 : 3100, now + offset);
+          click.frequency.exponentialRampToValueAtTime(420 + (index % 3) * 180, now + offset + 0.042);
+          clickFilter.type = "highpass";
+          clickFilter.frequency.setValueAtTime(1100, now + offset);
+          clickGain.gain.setValueAtTime(0.0001, now + offset);
+          clickGain.gain.linearRampToValueAtTime(0.62, now + offset + 0.003);
+          clickGain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.052);
+          click.connect(clickFilter);
+          clickFilter.connect(clickGain);
+          clickGain.connect(master);
+          click.start(now + offset);
+          click.stop(now + offset + 0.055);
+
+          var snapLength = Math.floor(audio.sampleRate * 0.018);
+          var snapBuffer = audio.createBuffer(1, snapLength, audio.sampleRate);
+          var snapData = snapBuffer.getChannelData(0);
+          for (var j = 0; j < snapLength; j++) {
+            snapData[j] = (Math.random() * 2 - 1) * (1 - j / snapLength);
+          }
+          var snap = audio.createBufferSource();
+          var snapGain = audio.createGain();
+          var snapFilter = audio.createBiquadFilter();
+          snap.buffer = snapBuffer;
+          snapFilter.type = "highpass";
+          snapFilter.frequency.setValueAtTime(1800, now + offset);
+          snapGain.gain.setValueAtTime(0.0001, now + offset);
+          snapGain.gain.linearRampToValueAtTime(0.48, now + offset + 0.002);
+          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.022);
+          snap.connect(snapFilter);
+          snapFilter.connect(snapGain);
+          snapGain.connect(master);
+          snap.start(now + offset);
+        });
+
+        window.setTimeout(function () { audio.close(); }, 2600);
+      } catch (error) {
+        // Si el navegador no permite audio, la transición visual continúa normalmente.
+      }
+    }
+
+    document.querySelector(".illustration-link").addEventListener("click", function (event) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.body.classList.add("is-leaving");
+      if (!reducedMotion) document.body.classList.add("is-glitching");
+      if (!reducedMotion) playGlitchSound();
+      var delay = reducedMotion ? 0 : 2200;
+      window.setTimeout(function () {
+        window.location.href = "siempre-es-ahora.html";
+      }, delay);
+    });
+
+    function toggleLanguage() {
+      var isEnglish = document.body.classList.toggle("lang-en");
+      document.documentElement.lang = isEnglish ? "en" : "es";
+      document.querySelector(".language").textContent = isEnglish ? "ESPAÑOL" : "ENGLISH";
+    }
+  </script>
+
+  <script>
+    // Desde el 11 de marzo de 2027, enviar directamente a la nueva web.
+    (function () {
+      var activationDate = new Date("2027-03-11T00:00:00+01:00").getTime();
+      if (Date.now() >= activationDate) {
+        window.location.replace("https://atenas.top/");
+      }
+    })();
+  </script>
+</body>
 </html>
